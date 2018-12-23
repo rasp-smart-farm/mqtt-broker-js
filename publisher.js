@@ -1,11 +1,9 @@
 var mqtt = require('mqtt');
-var client = mqtt.connect('ws://pi.toannhu.com:8080');
+var client  = mqtt.connect('ws://tts.toannhu.com:8080')
 
-client.on('connect', function () {
-
-    setInterval(function () {
-        client.publish('myTopic', 'Hello mqtt');
-        console.log('Message Sent');
-    }, 5000);
-
-});
+setInterval(function () {
+	client.publish('smartFarm', 'Hello mqtt', function(error) {
+		console.log(error)
+	});
+	console.log('Message Sent');
+}, 5000);
